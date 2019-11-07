@@ -25,7 +25,7 @@ class ManagementApplicationTests {
 	private TestRestTemplate restTemplate;
 
 	@Test
-	public void testUser() {
+	private void testUser() {
 		//test add
 		User user = new User("admin", "password", "first_name", "last_name", null);
 		ResponseEntity<JSONObject> responseEntity = this.restTemplate
@@ -61,7 +61,7 @@ class ManagementApplicationTests {
 	}
 
 	@Test
-	public void testRole() {
+	private void testRole() {
 		//test add
 		Role role = new Role("admin");
 		ResponseEntity<JSONObject> responseEntity = this.restTemplate
@@ -93,7 +93,7 @@ class ManagementApplicationTests {
 	}
 
 	@Test
-	public void testRoleToUser() {
+	private void testRoleToUser() {
 		//add user
 		User user = new User("admin", "password", "first_name", "last_name", null);
 		ResponseEntity<JSONObject> responseEntity = this.restTemplate
