@@ -3,20 +3,22 @@ package com.bankfinance.management;
 import com.bankfinance.management.entities.Role;
 import com.bankfinance.management.entities.User;
 import org.json.JSONObject;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.*;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
-@SpringBootTest(classes = ManagementApplication.class,
-		webEnvironment = WebEnvironment.RANDOM_PORT)
-class ManagementApplicationTests {
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@RunWith(SpringRunner.class)
+public class ManagementApplicationTests {
 
 	@LocalServerPort
 	private int port;
@@ -25,7 +27,7 @@ class ManagementApplicationTests {
 	private TestRestTemplate restTemplate;
 
 	@Test
-	private void testUser() {
+	public void testUser() {
 		//test add
 		User user = new User("admin", "password", "first_name", "last_name", null);
 		ResponseEntity<JSONObject> responseEntity = this.restTemplate
@@ -61,7 +63,7 @@ class ManagementApplicationTests {
 	}
 
 	@Test
-	private void testRole() {
+	public void testRole() {
 		//test add
 		Role role = new Role("admin");
 		ResponseEntity<JSONObject> responseEntity = this.restTemplate
@@ -93,7 +95,7 @@ class ManagementApplicationTests {
 	}
 
 	@Test
-	private void testRoleToUser() {
+	public void testRoleToUser() {
 		//add user
 		User user = new User("admin", "password", "first_name", "last_name", null);
 		ResponseEntity<JSONObject> responseEntity = this.restTemplate
